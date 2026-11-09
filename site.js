@@ -17,11 +17,11 @@ const themes={
   gallery:[
    ['assets/sandstone-facade.webp','Sunlit stone architecture and striking shadows','01 / Light and structure','large'],
    ['assets/terracotta-rhythm.webp','Repetitive terracotta architecture','02 / Rhythm and detail','tall'],
-   ['assets/forest-living.webp','Green-toned interior framing a wooded landscape','03 / Open to the outside','wide'],
-   ['assets/portal-clay.webp','Orange architectural portal framing a blue sky','04 / The space between','tall'],
+   ['assets/desert-shading.webp','Warm terracotta facade with architectural louvers and blue sky, illustrative visualization','03 / Shade and geometry','wide'],
+   ['assets/desert-slat-macro.webp','Warm afternoon light filtering through horizontal slats, illustrative visualization','04 / The angle of light','tall'],
   ],
-  systemShade:'assets/forest-living.webp',
-  systemInsect:'assets/portal-clay.webp',
+  systemShade:'assets/desert-shading.webp',
+  systemInsect:'assets/desert-screen-interior.webp',
   caption:'Light can change the character of a surface.',
   finishMap:{forest:['Deep forest','#123e31'],clay:['Burnt clay','#ba6d48'],cobalt:['Cobalt','#245fb0'],coral:['Signal coral','#f57f79']},
   finishKeys:['forest','clay','cobalt','coral'],
@@ -34,15 +34,15 @@ const themes={
   statement:'Built to move. Made to belong.',
   statementBody:'The smallest movements have the greatest impact. A filter of daylight. An opening to the outside. A system that feels as considered as the room around it.',
   label:'COLOUR STUDY / 01',
-  craft:'assets/portal-clay.webp',
+  craft:'assets/forest-shadows.webp',
   gallery:[
-   ['assets/sandstone-facade.webp','Sunlit stone architecture and striking shadows','01 / Light and structure','large'],
-   ['assets/terracotta-rhythm.webp','Repetitive terracotta architecture','02 / Rhythm and detail','tall'],
-   ['assets/forest-living.webp','Green-toned interior framing a wooded landscape','03 / Open to the outside','wide'],
-   ['assets/portal-clay.webp','Orange architectural portal framing a blue sky','04 / The space between','tall'],
+   ['assets/forest-shadows.webp','Forest-green interior and filtered daylight through venetian blinds, illustrative visualization','01 / Light as material','large'],
+   ['assets/forest-warm-interior.webp','Warm, tactile interior with adjustable shading and woodland beyond, illustrative visualization','02 / Architecture at rest','tall'],
+   ['assets/neutral-blinds.webp','Architectural interior showing venetian blind geometry','03 / The shaded interior','wide'],
+   ['assets/desert-slat-macro.webp','Architectural slats photographed in warm light, illustrative visualization','04 / Made of detail','tall'],
   ],
-  systemShade:'assets/forest-living.webp',
-  systemInsect:'assets/portal-clay.webp',
+  systemShade:'assets/forest-shadows.webp',
+  systemInsect:'assets/forest-warm-interior.webp',
   caption:'An opening is never just an opening.',
   finishMap:{forest:['Deep forest','#123e31'],clay:['Burnt clay','#ba6d48'],cobalt:['Cobalt','#245fb0'],coral:['Signal coral','#f57f79']},
   finishKeys:['forest','clay','cobalt','coral'],
@@ -59,14 +59,14 @@ const themes={
   gallery:[
    ['assets/neutral-portal.webp','Sculptural sunlit architectural opening','01 / The opening','large'],
    ['assets/neutral-exterior.webp','Quiet stone home in an evening landscape','02 / Architecture at rest','wide'],
-   ['assets/neutral-blinds.webp','Warm interior with precisely aligned window blinds','03 / The light filter','tall'],
+   ['assets/neutral-roller-screen.webp','Bright studio interior with roller shade and pleated insect screen, illustrative visualization','03 / The light filter','tall'],
    ['assets/neutral-interior.webp','Bright modern lounge overlooking an outdoor courtyard','04 / A room to breathe','wide'],
    ['assets/neutral-courtyard.webp','Rhythmic terracotta facade against the sky','05 / Built in rhythm','tall'],
    ['assets/neutral-sunroom.webp','Soft morning light across an open living space','06 / Light in motion','wide'],
-   ['assets/neutral-garden.webp','Warm interior, outdoor garden and large glazed openings','07 / Inside meets outside','large'],
+   ['assets/neutral-courtyard-screen.webp','Sunlit architectural living room and framed exterior, illustrative visualization','07 / Inside meets outside','large'],
   ],
-  systemShade:'assets/neutral-blinds.webp',
-  systemInsect:'assets/neutral-garden.webp',
+  systemShade:'assets/neutral-roller-screen.webp',
+  systemInsect:'assets/neutral-courtyard-screen.webp',
   caption:'Small movements change the character of a room.',
   finishMap:{ivory:['Studio ivory','#ece7dd'],sand:['Stone beige','#c9b69a'],sage:['Soft sage','#99a38b'],blue:['Muted blue','#5d82b4']},
   finishKeys:['ivory','sand','sage','blue'],
@@ -84,10 +84,10 @@ app.innerHTML=`
 <div class="reveal-curtain" aria-hidden="true"><div></div><div></div></div>
 <header class="topbar" id="topbar">
   <a class="wordmark" href="#top" aria-label="S.A.C. home"><span>S<span class="worddot">.</span>A<span class="worddot">.</span>C<span class="worddot">.</span></span><small>ASSEMBLY</small></a>
-  <nav class="navlinks" aria-label="Main navigation"><a href="#story">Our approach</a><a href="#systems">What we do</a><a href="#company">Company</a><a href="#contact">Contact</a><a class="navstudio" href="${studio}" target="_blank" rel="noopener noreferrer">Product Studio <span aria-hidden="true">↗</span></a></nav>
+  <nav class="navlinks" aria-label="Main navigation"><a href="#story">Our approach</a><a href="#systems">What we do</a><a href="materials.html?direction=${direction}">Materials</a><a href="#company">Company</a><a href="#contact">Contact</a><a class="navstudio" href="${studio}" target="_blank" rel="noopener noreferrer">Product Studio <span aria-hidden="true">↗</span></a></nav>
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
 </header>
-<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden><a href="#story">Our approach</a><a href="#systems">What we do</a><a href="#company">Company</a><a href="#contact">Contact</a><a href="${studio}" target="_blank" rel="noopener noreferrer">Product Studio ↗</a></nav>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" hidden><a href="#story">Our approach</a><a href="#systems">What we do</a><a href="materials.html?direction=${direction}">Materials</a><a href="#company">Company</a><a href="#contact">Contact</a><a href="${studio}" target="_blank" rel="noopener noreferrer">Product Studio ↗</a></nav>
 <main id="top">
 <section class="hero-track" aria-label="Cinematic introduction" id="intro">
  <div class="hero-sticky">
@@ -140,6 +140,10 @@ app.innerHTML=`
   <div class="material-preview" id="material-preview" style="--material:${currentFinish[1]}"><div class="material-blind" aria-hidden="true"><div class="blind-header"></div>${Array.from({length:11},(_,i)=>`<span class="blind-slat" style="--i:${i}"></span>`).join('')}<div class="blind-footer"></div></div><div class="material-glow"></div><div class="material-preview-label"><strong id="material-name">${currentFinish[0]}</strong><span>Interactive colour study — illustrative, not a product specification</span></div></div>
   <div class="material-controls"><p>Move through colour.</p><div class="colour-options" role="group" aria-label="Choose illustrative material finish">${optionsHtml}</div><a href="mailto:${eMail}?subject=S.A.C.%20material%20and%20finish%20information">Ask for material information <span aria-hidden="true">↗</span></a></div>
  </div>
+ <a class="library-invitation" href="materials.html?direction=${direction}" aria-label="Open the interactive Material Library">
+  <span class="library-invitation-copy"><span class="chapter-number">A NEW CHAPTER / MATERIAL LIBRARY</span><strong>Take a closer<br>look.</strong><span>Explore fabric, frame finishes and mesh through a tactile interactive collection.</span><span class="library-enter">Open the material book <b aria-hidden="true">↗</b></span></span>
+  <span class="library-invitation-visual" aria-hidden="true"><span class="library-cover"><span>S.A.C.</span><span>MATERIAL<br>STUDIES</span><span>001—003</span></span><span class="library-open-page"><i></i><i></i><i></i><i></i></span></span>
+ </a>
 </section>
 <section class="company-section" id="company">
  <div class="company-main"><span class="chapter-number">05 / OUR COMPANY</span><h2>Made in<br><em>Zrenjanin.</em><br>Looking outward.</h2><p>S.A.C. Assembly Company is a manufacturing business in Serbia focused on custom window decoration and insect screen solutions for European trade partners.</p><p class="company-detail">In 2025, production of original Metaco pleated screen doors began at S.A.C. in Serbia in cooperation with KeJe.</p><a href="https://www.keje.nl/en/inspiration-and-advice/keje-commences-production-of-original-insect-screen-doors-in-serbia" target="_blank" rel="noopener noreferrer">Read the KeJe production announcement <span aria-hidden="true">↗</span></a></div>
@@ -153,7 +157,8 @@ app.innerHTML=`
  <footer><span>S.A.C. Assembly Company © <span id="year"></span></span><span>Custom-made window covering and insect screen systems</span><a href="compare.html">Compare creative directions ↗</a></footer>
 </section>
 </main>
-<div class="variant-dock" id="variant-dock"><a href="compare.html" class="study-home">← Creative study</a><a href="forest.html" ${direction==='forest'?'aria-current="page"':''}>01 / Forest</a><a href="desert.html" ${direction==='desert'?'aria-current="page"':''}>02 / Desert</a><a href="neutral.html" ${direction==='neutral'?'aria-current="page"':''}>03 / Neutral</a></div>
+<nav class="floating-island" id="floating-island" aria-label="Quick navigation"><a href="#top" class="island-link island-home" aria-label="Home" data-section="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.2 12 3l9 8.2V21H6v-9.5"/><path d="M9 21v-7h6v7"/></svg><span class="island-tooltip">Home</span></a><a href="#story" class="island-link island-story" aria-label="Approach" data-section="#story"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><span class="island-tooltip">Approach</span></a><a href="#systems" class="island-link island-systems" aria-label="Systems" data-section="#systems"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8 4.5v9L12 20l-8-4.5v-9L12 2z"/><path d="m4 6.5 8 4.5 8-4.5M12 11v9"/></svg><span class="island-tooltip">Systems</span></a><a href="materials.html?direction=${direction}" class="island-link island-book" aria-label="Materials" data-section="#materials"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6c-2.2-1.6-5-2-9-1v14c4-1 6.8-.6 9 1 2.2-1.6 5-2 9-1V5c-4-1-6.8-.6-9 1z"/><path d="M12 6v14"/></svg><span class="island-tooltip">Materials</span></a><a href="#company" class="island-link island-company" aria-label="Company" data-section="#company"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 7h2m4 0h1M9 11h2m4 0h1M9 15h2m4 0h1M10 21v-3h4v3"/></svg><span class="island-tooltip">Company</span></a><a href="#contact" class="island-link island-contact" aria-label="Contact" data-section="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></svg><span class="island-tooltip">Contact</span></a><a href="${studio}" class="island-link island-studio" aria-label="Product Studio" data-section="" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4v3h16v-3h-2M8 12l4-4 4 4M12 8v10M6 4h12"/></svg><span class="island-tooltip">Product Studio</span></a></nav>
+<div class="variant-dock" id="variant-dock"><a class="study-home" href="compare.html" aria-label="Back to all creative studies">← Creative study</a><a href="forest.html" ${direction==='forest'?'aria-current="page"':''}>01 / Forest</a><a href="desert.html" ${direction==='desert'?'aria-current="page"':''}>02 / Desert</a><a href="neutral.html" ${direction==='neutral'?'aria-current="page"':''}>03 / Neutral</a></div>
 `;
 const scrollable=Array.from(document.querySelectorAll('a[href^="#"]'));
 const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -195,6 +200,9 @@ function update(){rafPending=false;
  const ga=document.querySelector('.gallery-track').offsetTop;
  const co=document.querySelector('.company-section').offsetTop;
  nav.classList.toggle('over-light', (p>.76 && sy<cr) || (sy>=st && sy<cr) || (sy>=ga && sy<co));
+ const activeTargets=['top','story','systems','materials','company','contact'];
+ let activeId='top';for(const id of activeTargets){const el=document.getElementById(id);if(el && sy+h*.45>=el.getBoundingClientRect().top+sy)activeId=id;}
+ document.querySelectorAll('.floating-island .island-link[data-section]').forEach(a=>a.classList.toggle('is-active',a.dataset.section==='#'+activeId));
  const gstart=gallery.getBoundingClientRect().top+sy,grange=Math.max(1,gallery.offsetHeight-h);
  const gp=clamp((sy-gstart)/grange);
  const maxRail=Math.max(0,rail.scrollWidth-rail.parentElement.clientWidth);
