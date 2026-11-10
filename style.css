@@ -125,3 +125,26 @@
 @media(max-width:760px){.floating-island{bottom:max(12px,env(safe-area-inset-bottom));padding:6px;gap:1px}.floating-island .island-link{width:42px;height:42px}.floating-island svg{width:21px;height:21px}.variant-dock{left:50%;bottom:calc(72px + env(safe-area-inset-bottom));transform:translateX(-50%);padding:4px;gap:0;font-size:10px}.variant-dock a{padding:8px 7px}.library-invitation{grid-template-columns:1fr;min-height:0}.library-invitation-copy{padding:45px 25px 25px;gap:20px}.library-invitation-copy>strong{font-size:clamp(56px,12vw,92px)}.library-invitation-visual{height:320px}.library-cover{width:38%;height:72%}.library-open-page{height:70%;width:38%}.island-tooltip{display:none}.contact-section footer{padding-bottom:70px}}
 @media(max-width:365px){.floating-island .island-link{width:39px;height:39px}.floating-island{padding:5px}}
 @media(prefers-reduced-motion:reduce){.library-cover,.floating-island .island-link{transition:none}}
+
+/* LOCAL REVIEW ONLY — extend original pinned horizontal travel for the added gallery frames. */
+:root[data-direction="forest"] .gallery-track { height: 420vh; }
+:root[data-direction="desert"] .gallery-track { height: 490vh; }
+@media (max-width: 760px) {
+  :root[data-direction="forest"] .gallery-track { height: 340svh; }
+  :root[data-direction="desert"] .gallery-track { height: 395svh; }
+}
+
+/* LOCAL REVIEW ONLY — mobile color-study slats: preserve the 11 original interactive slats. */
+@media (max-width: 760px) {
+  .material-preview { height: clamp(350px, 105vw, 440px); min-height: 0; }
+  .material-blind {
+    width: min(78%, 330px);
+    height: clamp(245px, 74vw, 325px);
+    flex: 0 0 auto;
+    gap: 4px;
+    transform: perspective(900px) rotateY(-6deg);
+  }
+  .blind-header, .blind-footer { flex: 0 0 12px; height: 12px; }
+  .blind-slat { flex: 1 1 0; height: auto; min-height: 0; }
+  .material-preview-label { left: 16px; right: 16px; bottom: 15px; }
+}

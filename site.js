@@ -19,6 +19,9 @@ const themes={
    ['assets/terracotta-rhythm.webp','Repetitive terracotta architecture','02 / Rhythm and detail','tall'],
    ['assets/desert-shading.webp','Warm terracotta facade with architectural louvers and blue sky, illustrative visualization','03 / Shade and geometry','wide'],
    ['assets/desert-slat-macro.webp','Warm afternoon light filtering through horizontal slats, illustrative visualization','04 / The angle of light','tall'],
+   ['assets/desert-blue-installation.webp','Cobalt-blue architectural installation with orange sculptural elements and translucent screens, visual reference','05 / Form through colour','large'],
+   ['assets/desert-venetian-light.webp','Venetian blinds shaping dramatic light over a warm architectural interior, visual reference','06 / A geometry of light','tall'],
+   ['assets/desert-terracotta-sky.webp','Terracotta architecture against a deep-blue sky, visual reference','07 / Material and sky','wide'],
   ],
   systemShade:'assets/desert-shading.webp',
   systemInsect:'assets/desert-screen-interior.webp',
@@ -40,6 +43,8 @@ const themes={
    ['assets/forest-warm-interior.webp','Warm, tactile interior with adjustable shading and woodland beyond, illustrative visualization','02 / Architecture at rest','tall'],
    ['assets/neutral-blinds.webp','Architectural interior showing venetian blind geometry','03 / The shaded interior','wide'],
    ['assets/desert-slat-macro.webp','Architectural slats photographed in warm light, illustrative visualization','04 / Made of detail','tall'],
+   ['assets/forest-lounge.webp','Emerald-green lounge with coral upholstery and an architectural window, visual reference','05 / Forest after dark','large'],
+   ['assets/forest-coral-arch.webp','Sculptural teal interior with coral passage and natural skylight, visual reference','06 / Sculpted space','wide'],
   ],
   systemShade:'assets/forest-shadows.webp',
   systemInsect:'assets/forest-warm-interior.webp',
@@ -205,8 +210,13 @@ function update(){rafPending=false;
  document.querySelectorAll('.floating-island .island-link[data-section]').forEach(a=>a.classList.toggle('is-active',a.dataset.section==='#'+activeId));
  const gstart=gallery.getBoundingClientRect().top+sy,grange=Math.max(1,gallery.offsetHeight-h);
  const gp=clamp((sy-gstart)/grange);
- const maxRail=Math.max(0,rail.scrollWidth-rail.parentElement.clientWidth);
- rail.style.transform=`translate3d(${-gp*maxRail}px,0,0)`;
+ // The gallery rail starts inset from the viewport's left edge. Account for
+ // that inset and a small right margin so the final image can enter fully.
+ const additionalTravel=rail.offsetLeft+window.innerWidth*.045;
+ const maxRail=Math.max(0,rail.scrollWidth-rail.parentElement.clientWidth+additionalTravel);
+ // Let the final image rest in view before the section unpins.
+ const travelProgress=clamp(gp/.90);
+ rail.style.transform=`translate3d(${-travelProgress*maxRail}px,0,0)`;
  document.querySelectorAll('[data-parallax]').forEach(el=>{const y=el.getBoundingClientRect().top+h/2;const v=clamp((h-y)/h,-1,1);const img=el.querySelector('img');img.style.transform=`translate3d(0,${v*16}px,0) scale(1.045)`;});
 }
 let startMs=performance.now();function breathe(now){
